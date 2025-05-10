@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/shipyar/static/css/main.1e85aea5.css",
-    "main.js": "/shipyar/static/js/main.13fbbfce.js",
+    "main.css": "/shipyar/static/css/main.27b0bd8f.css",
+    "main.js": "/shipyar/static/js/main.5b083109.js",
     "static/media/heart.png": "/shipyar/static/media/heart.f91642afb8c74a40f1bf.png",
     "static/media/package.png": "/shipyar/static/media/package.0b82af85e0d66071c72c.png",
     "static/media/logo.png": "/shipyar/static/media/logo.d9e9f2e3696a7e3140d0.png",
     "static/media/arrow.png": "/shipyar/static/media/arrow.d558e0f69a8bec3199e9.png",
     "index.html": "/shipyar/index.html",
-    "main.1e85aea5.css.map": "/shipyar/static/css/main.1e85aea5.css.map",
-    "main.13fbbfce.js.map": "/shipyar/static/js/main.13fbbfce.js.map"
+    "main.27b0bd8f.css.map": "/shipyar/static/css/main.27b0bd8f.css.map",
+    "main.5b083109.js.map": "/shipyar/static/js/main.5b083109.js.map"
   },
   "entrypoints": [
-    "static/css/main.1e85aea5.css",
-    "static/js/main.13fbbfce.js"
+    "static/css/main.27b0bd8f.css",
+    "static/js/main.5b083109.js"
   ]
 }
