@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/shipyar/static/css/main.0d6278d9.css",
-    "main.js": "/shipyar/static/js/main.961cda9a.js",
+    "main.js": "/shipyar/static/js/main.6d4378fd.js",
     "static/media/BG.png": "/shipyar/static/media/BG.f7e32652499e5543edb6.png",
     "static/media/P3.jpg": "/shipyar/static/media/P3.0704c2deaa658bf7198d.jpg",
     "static/media/P1.jpg": "/shipyar/static/media/P1.19c2a4bc3fcd6edbc719.jpg",
@@ -9,10 +9,10 @@
     "static/media/P2.jpg": "/shipyar/static/media/P2.6160f40ec430056df0cb.jpg",
     "index.html": "/shipyar/index.html",
     "main.0d6278d9.css.map": "/shipyar/static/css/main.0d6278d9.css.map",
-    "main.961cda9a.js.map": "/shipyar/static/js/main.961cda9a.js.map"
+    "main.6d4378fd.js.map": "/shipyar/static/js/main.6d4378fd.js.map"
   },
   "entrypoints": [
     "static/css/main.0d6278d9.css",
-    "static/js/main.961cda9a.js"
+    "static/js/main.6d4378fd.js"
   ]
 }
