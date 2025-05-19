@@ -1,16 +1,23 @@
-// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// Import these components individually
+import { HashRouter } from 'react-router-dom';
+import { Routes } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Home from './pages/Home';
 import './App.css';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </Router>
+    <HashRouter>
+      <div className="app-container">
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            {/* Add more routes as you develop them */}
+          </Routes>
+        </main>
+      </div>
+    </HashRouter>
   );
 }
 
