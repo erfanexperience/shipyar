@@ -881,3 +881,10 @@
     gap: 2rem;
   }
 }
+
+/* Mobile/Tablet Background Image Override */
+@media (max-width: 1024px) {
+  .hero-image {
+    content: url('../assets/images/BG-Mobile.jpg');
+  }
+}
