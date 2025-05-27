@@ -1,18 +1,19 @@
 {
   "files": {
-    "main.css": "/shipyar/static/css/main.0d6278d9.css",
-    "main.js": "/shipyar/static/js/main.6d4378fd.js",
+    "main.css": "/shipyar/static/css/main.828da8d0.css",
+    "main.js": "/shipyar/static/js/main.ee0e755d.js",
     "static/media/BG.png": "/shipyar/static/media/BG.f7e32652499e5543edb6.png",
     "static/media/P3.jpg": "/shipyar/static/media/P3.0704c2deaa658bf7198d.jpg",
     "static/media/P1.jpg": "/shipyar/static/media/P1.19c2a4bc3fcd6edbc719.jpg",
     "static/media/HIW.jpg": "/shipyar/static/media/HIW.2e5044ae5406b5998324.jpg",
     "static/media/P2.jpg": "/shipyar/static/media/P2.6160f40ec430056df0cb.jpg",
+    "static/media/logo.png": "/shipyar/static/media/logo.20d299c00260a7dec339.png",
     "index.html": "/shipyar/index.html",
-    "main.0d6278d9.css.map": "/shipyar/static/css/main.0d6278d9.css.map",
-    "main.6d4378fd.js.map": "/shipyar/static/js/main.6d4378fd.js.map"
+    "main.828da8d0.css.map": "/shipyar/static/css/main.828da8d0.css.map",
+    "main.ee0e755d.js.map": "/shipyar/static/js/main.ee0e755d.js.map"
   },
   "entrypoints": [
-    "static/css/main.0d6278d9.css",
-    "static/js/main.6d4378fd.js"
+    "static/css/main.828da8d0.css",
+    "static/js/main.ee0e755d.js"
   ]
 }
