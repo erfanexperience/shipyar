@@ -95,8 +95,11 @@ const Home = () => {
       <nav className="navbar">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo">
-            <img src={logoImg} alt="Shipyar Logo" className="navbar-logo-img" />
-            <span className="navbar-logo-text">Shipyar</span>
+            <img src={logoImg} alt="Shippyar Logo" className="navbar-logo-img" />
+            <span className="navbar-logo-text">
+              <span className="logo-shipp">Shipp</span>
+              <span className="logo-yar">yar</span>
+            </span>
           </Link>
           <div className="navbar-links">
             <Link to="/about" className="navbar-link">About</Link>
@@ -233,14 +236,14 @@ const Home = () => {
             </div>
           </div>
           <div className="hero-content-right">
-            <img src={bgImage} alt="Shipyar Global Network" className="hero-image" />
+            <img src={bgImage} alt="Shippyar Global Network" className="hero-image" />
           </div>
         </div>
       </section>
 
       {/* How It Works Section */}
       <section className="how-it-works-section">
-        <h2 className="section-title">How Shipyar Works</h2>
+        <h2 className="section-title">How Shippyar Works</h2>
         
         <div className="how-it-works-content">
           <div className="how-it-works-text">
@@ -270,14 +273,14 @@ const Home = () => {
           </div>
           
           <div className="how-it-works-image">
-            <img src={howItWorksImg} alt="How Shipyar Works" />
+            <img src={howItWorksImg} alt="How Shippyar Works" />
           </div>
         </div>
       </section>
 
       {/* Benefits Section */}
       <section className="benefits-section">
-        <h2 className="section-title">Why Choose Shipyar?</h2>
+        <h2 className="section-title">Why Choose Shippyar?</h2>
         
         <div className="benefits-container">
           <div className="benefit-card">
@@ -376,7 +379,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <p className="testimonial-text">"Shipyar helped me send handmade gifts to my family overseas without the usual customs headaches and delays. The platform is intuitive and customer support is incredibly responsive."</p>
+            <p className="testimonial-text">"Shippyar helped me send handmade gifts to my family overseas without the usual customs headaches and delays. The platform is intuitive and customer support is incredibly responsive."</p>
           </div>
         </div>
       </section>
@@ -385,7 +388,7 @@ const Home = () => {
       <section className="cta-section">
         <div className="cta-content">
           <h2>Ready to Transform the Way You Ship?</h2>
-          <p>Join thousands of travelers and shippers already using Shipyar worldwide.</p>
+          <p>Join thousands of travelers and shippers already using Shippyar worldwide.</p>
           <div className="cta-buttons">
             <Link to="/register" className="cta-button primary">Sign Up Free</Link>
             <Link to="/how-it-works" className="cta-button secondary">Learn More</Link>
@@ -397,13 +400,17 @@ const Home = () => {
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-logo-section">
-            <img src={logoImg} alt="Shipyar Logo" className="footer-logo" />
+            <img src={logoImg} alt="Shippyar Logo" className="footer-logo" />
+            <div className="footer-logo-text">
+              <span className="footer-logo-shipp">Shipp</span>
+              <span className="footer-logo-yar">yar</span>
+            </div>
             <h3 className="footer-tagline">Connecting journeys, delivering packages</h3>
             <div className="social-icons">
-              <a href="#" className="social-icon"><i className="fab fa-facebook-f"></i></a>
-              <a href="#" className="social-icon"><i className="fab fa-twitter"></i></a>
-              <a href="#" className="social-icon"><i className="fab fa-instagram"></i></a>
-              <a href="#" className="social-icon"><i className="fab fa-linkedin-in"></i></a>
+              <a href="https://facebook.com" className="social-icon"><i className="fab fa-facebook-f"></i></a>
+              <a href="https://twitter.com" className="social-icon"><i className="fab fa-twitter"></i></a>
+              <a href="https://instagram.com" className="social-icon"><i className="fab fa-instagram"></i></a>
+              <a href="https://linkedin.com" className="social-icon"><i className="fab fa-linkedin-in"></i></a>
             </div>
           </div>
           
@@ -450,11 +457,11 @@ const Home = () => {
         </div>
         
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} Shipyar. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Shippyar. All rights reserved.</p>
           <div className="footer-bottom-links">
-            <a href="#">Sitemap</a>
-            <a href="#">Accessibility</a>
-            <a href="#">Cookie Preferences</a>
+            <a href="/sitemap">Sitemap</a>
+            <a href="/accessibility">Accessibility</a>
+            <a href="/cookie-preferences">Cookie Preferences</a>
           </div>
         </div>
       </footer>

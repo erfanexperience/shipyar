@@ -1,0 +1,680 @@
+/* src/components/shipper/TravelerCard.css */
+.traveler-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+  position: relative;
+}
+
+.traveler-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Card Header */
+.card-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.traveler-profile {
+  display: flex;
+  flex: 1;
+}
+
+.profile-image-container {
+  position: relative;
+  margin-right: 1rem;
+}
+
+.profile-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f3f4f6;
+}
+
+.online-indicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.online-indicator.online {
+  background-color: #10b981;
+}
+
+.online-indicator.recent {
+  background-color: #f59e0b;
+}
+
+.online-indicator.offline {
+  background-color: #6b7280;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-name-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.traveler-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.verified-badge {
+  color: #3293D1;
+  font-size: 1rem;
+}
+
+.pro-badge {
+  background: linear-gradient(135deg, #FAA43A, #f59e0b);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.favorite-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  font-size: 1.2rem;
+  transition: color 0.2s ease;
+}
+
+.favorite-btn:hover {
+  color: #ef4444;
+}
+
+.favorite-btn.active {
+  color: #ef4444;
+}
+
+.rating-section {
+  margin-bottom: 0.5rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.stars .fa-star {
+  color: #FAA43A;
+  font-size: 0.9rem;
+}
+
+.stars .far {
+  color: #d1d5db;
+}
+
+.rating-score {
+  font-weight: 600;
+  color: #111827;
+}
+
+.review-count {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.quick-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.stat i {
+  color: #3293D1;
+}
+
+.languages {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.languages i {
+  color: #3293D1;
+}
+
+/* Pricing Section */
+.pricing-section {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.price-amount {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #3293D1;
+}
+
+.price-unit {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.response-time {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.response-time.excellent {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.response-time.good {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.response-time.average {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Flight Information */
+.flight-info {
+  padding: 1.5rem;
+  border-bottom: 1px solid #f3f4f6;
+  background-color: #fafafa;
+}
+
+.route-timeline {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.departure-info,
+.arrival-info {
+  flex: 1;
+  text-align: center;
+}
+
+.departure-info {
+  text-align: left;
+}
+
+.arrival-info {
+  text-align: right;
+}
+
+.time {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.2rem;
+}
+
+.date {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 0.3rem;
+}
+
+.location strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+.airport {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-left: 0.3rem;
+}
+
+.flight-visual {
+  flex: 2;
+  margin: 0 1.5rem;
+}
+
+.flight-line {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.departure-dot,
+.arrival-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #3293D1;
+}
+
+.flight-path {
+  flex: 1;
+  height: 2px;
+  background-color: #3293D1;
+  position: relative;
+  margin: 0 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flight-path .fa-plane {
+  background-color: white;
+  color: #3293D1;
+  padding: 4px;
+  border-radius: 50%;
+  font-size: 1rem;
+  position: absolute;
+}
+
+.duration {
+  position: absolute;
+  top: -25px;
+  background-color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-weight: 500;
+  border: 1px solid #e5e7eb;
+}
+
+.stops {
+  position: absolute;
+  bottom: -20px;
+  background-color: #fef3c7;
+  color: #92400e;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.flight-details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.airline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.airline i {
+  color: #3293D1;
+}
+
+/* Space Information */
+.space-info {
+  padding: 1.5rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.space-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.space-header h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.space-header i {
+  color: #3293D1;
+}
+
+.space-weight {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #FAA43A;
+}
+
+.space-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dimensions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.dimensions i {
+  color: #3293D1;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Additional Details */
+.additional-details {
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.detail-section {
+  margin-bottom: 1.5rem;
+}
+
+.detail-section:last-child {
+  margin-bottom: 0;
+}
+
+.detail-section h5 {
+  margin: 0 0 0.8rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.detail-section ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.detail-section li {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 0.3rem;
+}
+
+.recent-review {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.review-rating {
+  margin-bottom: 0.5rem;
+}
+
+.review-rating .fa-star {
+  color: #FAA43A;
+  font-size: 0.8rem;
+  margin-right: 2px;
+}
+
+.recent-review p {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  color: #374151;
+  font-style: italic;
+}
+
+.reviewer {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* Card Actions */
+.card-actions {
+  padding: 1rem 1.5rem;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-details-btn {
+  background: none;
+  border: none;
+  color: #3293D1;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.toggle-details-btn:hover {
+  color: #2679b8;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.message-btn,
+.contact-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.message-btn {
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.message-btn:hover {
+  background-color: #e5e7eb;
+}
+
+.contact-btn {
+  background-color: #3293D1;
+  color: white;
+  border: 1px solid #3293D1;
+}
+
+.contact-btn:hover {
+  background-color: #2679b8;
+  border-color: #2679b8;
+}
+
+/* Last Seen */
+.last-seen {
+  display: none !important;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+}
+
+.last-seen .fa-circle {
+  font-size: 0.6rem;
+}
+
+.last-seen .fa-circle.online {
+  color: #10b981;
+}
+
+.last-seen .fa-circle.recent {
+  color: #f59e0b;
+}
+
+.last-seen .fa-circle.offline {
+  color: #6b7280;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .traveler-card {
+    margin-bottom: 1rem;
+  }
+
+  .card-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pricing-section {
+    align-self: stretch;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .route-timeline {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .flight-visual {
+    margin: 0;
+    order: -1;
+  }
+
+  .flight-line {
+    flex-direction: column;
+    height: 60px;
+  }
+
+  .flight-path {
+    height: 40px;
+    width: 2px;
+    margin: 0.5rem 0;
+  }
+
+  .duration {
+    right: -80px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .stops {
+    right: -70px;
+    bottom: 20%;
+  }
+
+  .card-actions {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .action-buttons {
+    justify-content: stretch;
+  }
+
+  .message-btn,
+  .contact-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .last-seen {
+    position: static;
+    margin-top: 0.5rem;
+    justify-content: flex-start;
+    background-color: transparent;
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .traveler-card {
+    border-radius: 8px;
+  }
+
+  .card-header,
+  .flight-info,
+  .space-info,
+  .additional-details,
+  .card-actions {
+    padding: 1rem;
+  }
+
+  .quick-stats {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .space-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
