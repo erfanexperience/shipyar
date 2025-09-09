@@ -1,0 +1,108 @@
+﻿Shippyar MVP Process & Secure Transaction Flow
+Overview:
+ Shippyar is a people-powered delivery marketplace that enables shoppers to purchase goods globally via trusted travelers. The following outlines a standard, professional MVP (Minimum Viable Product) user flow with integrated payment security and anti-fraud mechanisms.
+________________
+
+
+Step 1: Order Submission by Shopper
+* Shopper pastes a product link (e.g., from Amazon).
+
+* System automatically fetches item name, image, and price.
+
+* Shopper enters:
+
+   * Desired delivery destination and deadline.
+
+   * Proposed delivery reward (percentage or fixed amount).
+
+      * Order is published on the Shippyar marketplace.
+
+________________
+
+
+Step 2: Offers Submitted by Travelers
+         * Verified travelers planning trips to the destination view orders.
+
+         * Travelers submit offers indicating the delivery reward they expect.
+
+         * Shopper reviews offers and selects one (based on price, profile, and reviews).
+
+         * When an offer is accepted, the request enters the “Match” stage.
+
+________________
+
+
+Step 3: Payment by Shopper (Before Chat is Enabled)
+            * Shopper must pay the full amount before communicating with traveler:
+
+               * Product price (e.g., $120)
+
+               * Traveler reward (e.g., $7)
+
+               * Shippyar platform fee (e.g., 5% or $6.35)
+
+               * Total example: $133.35
+
+                  * Funds are held in Shippyar’s Escrow system.
+
+                  * Once payment is complete, private chat between traveler and shopper is unlocked.
+
+________________
+
+
+Step 4: Secure Communication & Delivery
+                     * Shopper and traveler coordinate delivery details in-app:
+
+                        * Location, time, preferences
+
+                           * Traveler purchases and carries the product.
+
+                           * Shopper confirms receipt upon successful delivery.
+
+                           * Shippyar releases funds from Escrow:
+
+                              * Item reimbursement to traveler
+
+                              * Delivery reward to traveler
+
+                              * Platform fee retained by Shippyar
+
+________________
+
+
+Security & Anti-Fraud Mechanisms
+✓ No chat access before full payment
+✓ In-app chat filters block personal contact info (e.g., phone, email, URLs)
+✓ Escrow system prevents off-platform transactions
+✓ Cancellation allowed only under strict terms (e.g., traveler hasn’t bought the item)
+✓ Shopper and traveler rating/review system builds trust and accountability
+✓ All financial transactions are processed securely via Stripe (or similar)
+________________
+
+
+Benefits of This Flow
+                                 * Prevents platform bypassing
+
+                                 * Builds shopper confidence
+
+                                 * Guarantees traveler is compensated fairly
+
+                                 * Ensures Shippyar monetizes all transactions
+
+                                 * Provides data for future automation and reputation metrics
+
+________________
+
+
+Optional Future Features (Post-MVP)
+                                    * Shipment tracking confirmation tools (image upload, QR scan, etc.)
+
+                                    * Traveler identity verification (KYC)
+
+                                    * Dispute resolution center
+
+                                    * Push notifications and delivery reminders
+
+                                    * Loyalty incentives for trusted users
+
+End of MVP Flow Document

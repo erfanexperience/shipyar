@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgis/postgis:15-3.3
+    container_name: shippyar_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: shippyar_dev
+      POSTGRES_USER: shippyar_user
+      POSTGRES_PASSWORD: shippyar_dev_password_2024
+      POSTGRES_HOST_AUTH_METHOD: md5
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shippyar_user -d shippyar_dev"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - shippyar_network
+
+volumes:
+  postgres_data:
+    name: shippyar_postgres_data
+
+networks:
+  shippyar_network:
+    name: shippyar_network
+    driver: bridge
