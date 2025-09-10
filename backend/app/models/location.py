@@ -4,12 +4,12 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 
 from app.models.base import BaseModel
+from app.core.database import Base
 
-class Country(BaseModel):
+class Country(Base):
     
     __tablename__ = "countries"
 
-    id = None
     code = Column(String(2), primary_key=True)
     name = Column(String(100), nullable=False)
     currency = Column(String(3), nullable=True)
@@ -21,20 +21,19 @@ class Country(BaseModel):
     def __repr__(self):
         return f"<Country(code={self.code}, name={self.name})>"
 
-class City(BaseModel):
+class City(Base):
     
     __tablename__ = "cities"
     
+    id = Column(UUID(as_uuid=True), primary_key=True)
     name = Column(String(100), nullable=False)
     country_code = Column(String(2), ForeignKey("countries.code"), nullable=False)
-    state_province = Column(String(100), nullable=True)
 
-    latitude = Column(Numeric(10, 7), nullable=True)
-    longitude = Column(Numeric(10, 7), nullable=True)
+    latitude = Column(Numeric(10, 8), nullable=True)
+    longitude = Column(Numeric(11, 8), nullable=True)
 
     timezone = Column(String(50), nullable=True)
-    population = Column(String, nullable=True)
-    is_major = Column(Boolean, default=False)
+    enabled = Column(Boolean, default=True)
 
     country = relationship("Country", back_populates="cities")
     

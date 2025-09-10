@@ -14,6 +14,14 @@ sys.path.append(str(Path(__file__).resolve().parent.parent))
 from app.core.config import settings
 from app.core.database import Base
 
+# Import all models to ensure they are registered with Base.metadata
+from app.models.user import User
+from app.models.order import Order
+from app.models.offer import Offer
+from app.models.conversation import Conversation, Message
+from app.models.payment import PaymentMethod, Transaction, EscrowHolding
+from app.models.location import Country, City
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config

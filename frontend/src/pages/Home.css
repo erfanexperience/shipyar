@@ -214,6 +214,15 @@
   border-bottom: 3px solid #3293D1;
 }
 
+.search-tab.active:first-child {
+  border-bottom-color: #3293D1;
+}
+
+.search-tab.active:last-child {
+  border-bottom-color: #FF6B35;
+  color: #FF6B35;
+}
+
 .search-form {
   padding: 1rem 0;
 }
@@ -900,6 +909,15 @@
   .search-tab.active {
     border-bottom: none;
     border-left: 3px solid #3293D1;
+  }
+  
+  .search-tab.active:first-child {
+    border-left-color: #3293D1;
+  }
+  
+  .search-tab.active:last-child {
+    border-left-color: #FF6B35;
+    color: #FF6B35;
   }
   
   .form-group-container {

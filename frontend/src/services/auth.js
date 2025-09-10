@@ -2,7 +2,7 @@ import api from './api';
 
 export const register = async (userData) => {
   try {
-    const response = await api.post('/api/v1/auth/register', userData);
+    const response = await api.post('/auth/register', userData);
     const { access_token, user } = response.data;
     
     localStorage.setItem('token', access_token);
@@ -16,7 +16,7 @@ export const register = async (userData) => {
 
 export const login = async (credentials) => {
   try {
-    const response = await api.post('/api/v1/auth/login', credentials);
+    const response = await api.post('/auth/login', credentials);
     const { access_token, user } = response.data;
     
     localStorage.setItem('token', access_token);

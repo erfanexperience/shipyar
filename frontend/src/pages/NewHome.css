@@ -1,0 +1,1383 @@
+/* New Homepage Styles - Grabr-inspired Design */
+
+.new-home-container {
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+/* Navigation Bar */
+.new-navbar {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 1rem 0;
+}
+
+.new-navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.new-navbar-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.5rem;
+}
+
+.new-navbar-logo-img {
+  height: 32px;
+  width: 32px;
+}
+
+.new-navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.new-navbar-brand .logo-shipp {
+  color: #3293D1;
+}
+
+.new-navbar-brand .logo-yar {
+  color: #FAA43A;
+}
+
+.new-navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Mode Toggle - Grabr Style */
+.mode-toggle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 3rem;
+}
+
+.mode-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 1.1rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+  padding-bottom: 0.5rem;
+}
+
+.mode-btn.active {
+  color: #3293D1;
+}
+
+/* Orange underline for Earn tab when active */
+.mode-btn:last-child.active {
+  color: #FAA43A;
+}
+
+.mode-btn:hover:not(.active) {
+  color: #374151;
+}
+
+/* Underline for active tab using pseudo-element */
+.mode-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  background: transparent;
+  transition: background 0.2s;
+}
+
+/* Blue underline for Order tab when active */
+.mode-btn:first-child.active::after {
+  background: #3293D1;
+}
+
+/* Orange underline for Earn tab when active */
+.mode-btn:last-child.active::after {
+  background: #FAA43A;
+}
+
+/* Navbar Links */
+.new-navbar-link {
+  color: #6b7280;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.new-navbar-link:hover {
+  color: #3293D1;
+}
+
+.new-navbar-signup {
+  background: #FAA43A;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.new-navbar-signup:hover {
+  background: #e89426;
+}
+
+.gift-icon {
+  font-size: 1.2rem;
+}
+
+.new-navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+/* Notification bell styling in navbar */
+.new-navbar-user .notification-container {
+  margin-right: 0.5rem;
+}
+
+.new-navbar-user .notification-bell {
+  color: #6b7280;
+  font-size: 18px;
+  padding: 6px;
+}
+
+.new-navbar-user .notification-bell:hover {
+  color: #3293D1;
+}
+
+.new-navbar-username {
+  color: #374151;
+  font-weight: 500;
+}
+
+.new-navbar-welcome {
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.new-navbar-username-link {
+  color: #3293D1;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s, text-decoration 0.2s;
+}
+
+.new-navbar-username-link:hover {
+  color: #2b7ab5;
+  text-decoration: underline;
+}
+
+.new-navbar-logout {
+  background: #FAA43A;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.new-navbar-logout:hover {
+  background: #e89331;
+}
+
+/* Hero Section */
+.new-hero-section {
+  padding: 4rem 0;
+  background: #ffffff;
+  min-height: 500px;
+}
+
+.new-hero-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.new-hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #3293D1;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.new-hero-benefits {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+.check-icon {
+  background: #FAA43A;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+/* Amazon Order Form - Horizontal */
+.amazon-order-form-horizontal {
+  display: flex;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 2rem auto 0;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 60px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 2px solid #e5e7eb;
+}
+
+.amazon-url-input-horizontal {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #1f2937;
+}
+
+.amazon-url-input-horizontal::placeholder {
+  color: #9ca3af;
+}
+
+.create-order-btn-horizontal {
+  padding: 0.75rem 2rem;
+  background: #3293D1;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.create-order-btn-horizontal:hover:not(:disabled) {
+  background: #2679b8;
+  transform: scale(1.02);
+}
+
+.create-order-btn-horizontal:disabled {
+  background: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Trust Banner Section */
+.trust-banner-section {
+  background: #e8f4f8;
+  padding: 40px 0 60px 0;
+  margin: 30px 0 40px 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+}
+
+/* Airplane Animation Wrapper */
+.airplane-animation-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 0;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: visible;
+  z-index: 10;
+}
+
+/* Airplane Animation */
+.airplane-animation-container {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  right: 0;
+  height: 30px;
+  width: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.flight-path {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  overflow: visible;
+}
+
+.flight-trail {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  overflow: visible;
+}
+
+.trail-line {
+  stroke: #FAA43A;
+  stroke-width: 2;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  opacity: 0;
+  -webkit-animation: drawTrail 15s linear infinite;
+  -moz-animation: drawTrail 15s linear infinite;
+  animation: drawTrail 15s linear infinite;
+  stroke-linecap: round;
+}
+
+.airplane-wrapper {
+  position: absolute;
+  top: 5px;
+  left: -40px;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: flyAcross 15s linear infinite;
+  -moz-animation: flyAcross 15s linear infinite;
+  animation: flyAcross 15s linear infinite;
+  will-change: transform;
+  z-index: 11;
+}
+
+.airplane-icon {
+  font-size: 28px;
+  color: #3293D1;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  -webkit-animation: planeWobble 3s ease-in-out infinite;
+  -moz-animation: planeWobble 3s ease-in-out infinite;
+  animation: planeWobble 3s ease-in-out infinite;
+}
+
+/* Keyframe Animations */
+@-webkit-keyframes flyAcross {
+  0% {
+    left: -30px;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  10% {
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px);
+  }
+  30% {
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+  }
+  50% {
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px);
+  }
+  70% {
+    -webkit-transform: translateY(1px);
+    transform: translateY(1px);
+  }
+  90% {
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px);
+  }
+  100% {
+    left: 100%;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@-moz-keyframes flyAcross {
+  0% {
+    left: -30px;
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+  10% {
+    -moz-transform: translateY(-2px);
+    transform: translateY(-2px);
+  }
+  30% {
+    -moz-transform: translateY(2px);
+    transform: translateY(2px);
+  }
+  50% {
+    -moz-transform: translateY(-1px);
+    transform: translateY(-1px);
+  }
+  70% {
+    -moz-transform: translateY(1px);
+    transform: translateY(1px);
+  }
+  90% {
+    -moz-transform: translateY(-2px);
+    transform: translateY(-2px);
+  }
+  100% {
+    left: 100%;
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes flyAcross {
+  0% {
+    left: -30px;
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-2px);
+  }
+  30% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+  70% {
+    transform: translateY(1px);
+  }
+  90% {
+    transform: translateY(-2px);
+  }
+  100% {
+    left: 100%;
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes drawTrail {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.8;
+  }
+  95% {
+    opacity: 0.8;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes drawTrail {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.8;
+  }
+  95% {
+    opacity: 0.8;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes drawTrail {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.8;
+  }
+  95% {
+    opacity: 0.8;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes planeWobble {
+  0%, 100% {
+    -webkit-transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    -webkit-transform: rotate(-2deg) scale(1.05);
+    transform: rotate(-2deg) scale(1.05);
+  }
+  50% {
+    -webkit-transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
+  }
+  75% {
+    -webkit-transform: rotate(2deg) scale(1.05);
+    transform: rotate(2deg) scale(1.05);
+  }
+}
+
+@-moz-keyframes planeWobble {
+  0%, 100% {
+    -moz-transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    -moz-transform: rotate(-2deg) scale(1.05);
+    transform: rotate(-2deg) scale(1.05);
+  }
+  50% {
+    -moz-transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
+  }
+  75% {
+    -moz-transform: rotate(2deg) scale(1.05);
+    transform: rotate(2deg) scale(1.05);
+  }
+}
+
+@keyframes planeWobble {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-2deg) scale(1.05);
+  }
+  50% {
+    transform: rotate(0deg) scale(1);
+  }
+  75% {
+    transform: rotate(2deg) scale(1.05);
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .airplane-wrapper,
+  .trail-line,
+  .airplane-icon {
+    animation: none;
+  }
+}
+
+.trust-banner-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.trust-banner-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.trust-banner-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3293D1;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.trust-banner-subtitle {
+  font-size: 1.125rem;
+  color: #FAA43A;
+  font-weight: 600;
+  margin-bottom: 0;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.trust-banner-btn {
+  background: #3293D1;
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.trust-banner-btn:hover {
+  background: #2579b5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(50, 147, 209, 0.3);
+}
+
+.trust-banner-illustration {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.illustration-placeholder {
+  width: 400px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.illustration-placeholder::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  top: -50%;
+  left: -50%;
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.illustration-placeholder i {
+  z-index: 1;
+  color: white !important;
+}
+
+/* Trust Features Grid */
+.trust-features-grid {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.trust-feature-card {
+  text-align: center;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.trust-feature-icon {
+  font-size: 2.5rem;
+  color: #3293D1;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.trust-feature-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.trust-feature-card p {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Product Showcase */
+.product-showcase-container {
+  margin-top: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-showcase-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3293D1;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.product-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(280px, 320px));
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  justify-content: center;
+}
+
+.showcase-product-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid #f3f4f6;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.showcase-product-card:hover {
+  border-color: #FAA43A;
+}
+
+.showcase-product-image {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.showcase-product-image img {
+  max-width: 85%;
+  max-height: 85%;
+  object-fit: contain;
+}
+
+.showcase-loading-placeholder {
+  color: #9ca3af;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.showcase-product-info {
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
+.showcase-product-info h4 {
+  font-size: 1.1rem;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 3em;
+}
+
+.showcase-product-pricing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.showcase-original-price {
+  font-size: 1.1rem;
+  color: #ef4444;
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+.showcase-product-price {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #3293D1;
+  margin: 0;
+}
+
+/* Navigation arrows (optional) */
+.showcase-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.showcase-nav-arrow:hover {
+  background: #3293D1;
+  color: white;
+  border-color: #3293D1;
+}
+
+.showcase-nav-arrow.left {
+  left: 0;
+}
+
+.showcase-nav-arrow.right {
+  right: 0;
+}
+
+/* Travel Search Form */
+.travel-search-form {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.travel-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.travel-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.travel-input-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.travel-input-group input {
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.travel-input-group input:focus {
+  outline: none;
+  border-color: #3293D1;
+}
+
+/* Location search wrapper for autocomplete */
+.location-search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.location-search-wrapper input {
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.location-search-wrapper input:focus {
+  outline: none;
+  border-color: #3293D1;
+}
+
+.find-orders-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #FAA43A;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.find-orders-btn:hover {
+  background: #e89426;
+}
+
+/* Travel Incentive Section */
+.travel-incentive-section {
+  background: #3293D1;
+  color: white;
+  padding: 3rem 0;
+}
+
+.travel-incentive-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.travel-incentive-content h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.travel-incentive-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.find-flights-btn {
+  background: white;
+  color: #3293D1;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.find-flights-btn:hover {
+  transform: translateY(-2px);
+}
+
+.travel-partners {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.partner-icon {
+  font-size: 2rem;
+}
+
+/* How It Works Section */
+.how-it-works-simple {
+  padding: 4rem 0;
+  background: #f9fafb;
+}
+
+.how-it-works-simple h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #1f2937;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.step-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+
+.step-number {
+  width: 48px;
+  height: 48px;
+  background: #FAA43A;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 auto 1rem;
+}
+
+.step-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #1f2937;
+}
+
+.step-card p {
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* Trust Section */
+.trust-section {
+  padding: 4rem 0;
+  background: white;
+}
+
+.trust-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #1f2937;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.trust-card {
+  text-align: center;
+  padding: 2rem;
+}
+
+.trust-icon {
+  font-size: 3rem;
+  color: #3293D1;
+  margin-bottom: 1rem;
+}
+
+.trust-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #1f2937;
+}
+
+.trust-card p {
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* Footer */
+.simple-footer {
+  background: #3293D1;
+  color: white;
+  padding: 3rem 0 1.5rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.footer-section a {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s;
+}
+
+.footer-section a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 1.5rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Product Preview */
+.product-preview {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  border: 2px solid #e5e7eb;
+  animation: slideUp 0.3s ease-out;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-preview.loading {
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #3293D1;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.product-preview.loading p {
+  margin-top: 1rem;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.product-preview img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: white;
+  padding: 0.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-info h3 {
+  font-size: 1.1rem;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #3293D1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .new-hero-title {
+    font-size: 2rem;
+  }
+  
+  .new-navbar-right {
+    gap: 1rem;
+  }
+  
+  .mode-toggle {
+    position: static;
+    transform: none;
+    gap: 1.5rem;
+    margin: 0 auto;
+  }
+  
+  .new-navbar-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .new-navbar-logo {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .new-navbar-right {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .travel-inputs {
+    grid-template-columns: 1fr;
+  }
+  
+  .steps-grid,
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .travel-incentive-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  /* Trust banner mobile adjustments */
+  .trust-banner-section {
+    padding: 40px 0;
+    margin: 40px 0 30px 0;
+  }
+
+  .trust-banner-container {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .trust-banner-title {
+    font-size: 1.75rem;
+  }
+
+  .trust-banner-subtitle {
+    font-size: 1rem;
+  }
+
+  .illustration-placeholder {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+  }
+
+  /* Trust features mobile adjustments */
+  .trust-features-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem;
+    margin-top: 2rem;
+  }
+
+  .trust-feature-card {
+    padding: 1rem;
+  }
+
+  .trust-feature-icon {
+    font-size: 2rem;
+  }
+
+  /* Product showcase mobile adjustments */
+  .product-showcase-container {
+    padding: 0 1rem;
+    margin-top: 2rem;
+  }
+  
+  .showcase-product-card {
+    flex: 0 0 150px;
+  }
+  
+  .showcase-product-image {
+    height: 120px;
+  }
+  
+  .showcase-product-info h4 {
+    font-size: 0.85rem;
+  }
+  
+  .showcase-product-price {
+    font-size: 1rem;
+  }
+  
+  /* Mobile animation optimizations */
+  .airplane-wrapper {
+    -webkit-animation: flyAcross 20s linear infinite;
+    -moz-animation: flyAcross 20s linear infinite;
+    animation: flyAcross 20s linear infinite;
+  }
+  
+  .trail-line {
+    -webkit-animation: drawTrail 20s linear infinite;
+    -moz-animation: drawTrail 20s linear infinite;
+    animation: drawTrail 20s linear infinite;
+  }
+  
+  .airplane-icon {
+    -webkit-animation: planeWobble 4s ease-in-out infinite;
+    -moz-animation: planeWobble 4s ease-in-out infinite;
+    animation: planeWobble 4s ease-in-out infinite;
+  }
+}

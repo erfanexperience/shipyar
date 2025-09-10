@@ -3,9 +3,9 @@ from datetime import date, datetime
 import enum
 from sqlalchemy import (
     Column, String, Integer, ForeignKey, Text, Date, 
-    Numeric, DateTime, Enum, CheckConstraint
+    Numeric, DateTime, Enum, CheckConstraint, UniqueConstraint
 )
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import UUID, JSONB
 from sqlalchemy.orm import relationship
 from app.models.base import BaseModel
 
@@ -27,6 +27,10 @@ class Order(BaseModel):
 
     shopper_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
 
+    # Amazon product fields
+    amazon_asin = Column(String(20), nullable=True)  # Amazon Standard Identification Number
+    amazon_data = Column(JSONB, nullable=True)  # Store full Amazon product data
+    
     product_name = Column(String(255), nullable=False)
     product_url = Column(Text, nullable=False)
     product_description = Column(Text, nullable=True)
@@ -39,8 +43,7 @@ class Order(BaseModel):
     destination_city_id = Column(UUID(as_uuid=True), ForeignKey("cities.id"), nullable=True)
     destination_address = Column(Text, nullable=True)
 
-    destination_latitude = Column(Numeric(10, 7), nullable=True)
-    destination_longitude = Column(Numeric(10, 7), nullable=True)
+    destination_coordinates = Column('destination_coordinates', nullable=True)
 
     deadline_date = Column(Date, nullable=False)
     preferred_delivery_date = Column(Date, nullable=True)
@@ -50,7 +53,7 @@ class Order(BaseModel):
     platform_fee = Column(Numeric(10, 2), nullable=True)
     total_cost = Column(Numeric(10, 2), nullable=False)
 
-    status = Column(Enum(OrderStatus), nullable=False, default=OrderStatus.DRAFT)
+    status = Column(Enum(OrderStatus, values_callable=lambda obj: [e.value for e in obj]), nullable=False, default=OrderStatus.DRAFT.value)
     special_instructions = Column(Text, nullable=True)
     weight_estimate = Column(Numeric(5, 2), nullable=True)
     size_description = Column(String(100), nullable=True)
@@ -96,10 +99,10 @@ class Order(BaseModel):
         return self.status == OrderStatus.ACTIVE and not self.is_matched
     
     @property
-    def destination_coordinates(self) -> tuple:
+    def destination_lat_lng(self) -> tuple:
         
-        if self.destination_latitude and self.destination_longitude:
-            return (float(self.destination_latitude), float(self.destination_longitude))
+        if self.destination_coordinates:
+            return self.destination_coordinates
         return None
     
     def update_status(self, new_status: OrderStatus, user_id: UUID = None, notes: str = None):
@@ -134,8 +137,8 @@ class OrderStatusHistory(BaseModel):
     __tablename__ = "order_status_history"
     
     order_id = Column(UUID(as_uuid=True), ForeignKey("orders.id", ondelete="CASCADE"), nullable=False)
-    old_status = Column(Enum(OrderStatus), nullable=True)
-    new_status = Column(Enum(OrderStatus), nullable=False)
+    old_status = Column(Enum(OrderStatus, values_callable=lambda obj: [e.value for e in obj]), nullable=True)
+    new_status = Column(Enum(OrderStatus, values_callable=lambda obj: [e.value for e in obj]), nullable=False)
     changed_by = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
     notes = Column(Text, nullable=True)
 

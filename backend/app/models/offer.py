@@ -1,9 +1,9 @@
 
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 import enum
 from sqlalchemy import (
     Column, ForeignKey, Text, Date, DateTime, 
-    Enum, CheckConstraint, UniqueConstraint
+    Enum, CheckConstraint, UniqueConstraint, Numeric
 )
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 from sqlalchemy.orm import relationship
@@ -14,6 +14,7 @@ class OfferStatus(str, enum.Enum):
     ACTIVE = "active"
     WITHDRAWN = "withdrawn"
     ACCEPTED = "accepted"
+    REJECTED = "rejected"
     EXPIRED = "expired"
 
 class Offer(BaseModel):
@@ -25,9 +26,10 @@ class Offer(BaseModel):
 
     message = Column(Text, nullable=True)
     proposed_delivery_date = Column(Date, nullable=True)
-    travel_route = Column(JSONB, nullable=True)
+    proposed_reward_amount = Column(Numeric(10, 2), nullable=True)  # Can propose different amount
+    travel_route = Column(JSONB, nullable=True)  # Keep for backward compatibility but optional
 
-    status = Column(Enum(OfferStatus), nullable=False, default=OfferStatus.ACTIVE)
+    status = Column(Enum(OfferStatus, values_callable=lambda obj: [e.value for e in obj]), nullable=False, default=OfferStatus.ACTIVE.value)
 
     expires_at = Column(DateTime(timezone=True), nullable=True)
 
@@ -47,14 +49,14 @@ class Offer(BaseModel):
         
         if self.status != OfferStatus.ACTIVE:
             return False
-        if self.expires_at and datetime.utcnow() > self.expires_at:
+        if self.expires_at and datetime.now(timezone.utc) > self.expires_at:
             return False
         return True
     
     @property
     def is_expired(self) -> bool:
         
-        if self.expires_at and datetime.utcnow() > self.expires_at:
+        if self.expires_at and datetime.now(timezone.utc) > self.expires_at:
             return True
         return self.status == OfferStatus.EXPIRED
     
@@ -67,6 +69,11 @@ class Offer(BaseModel):
         
         if self.status == OfferStatus.ACTIVE:
             self.status = OfferStatus.WITHDRAWN
+    
+    def reject(self):
+        
+        if self.status == OfferStatus.ACTIVE:
+            self.status = OfferStatus.REJECTED
     
     def accept(self):
         

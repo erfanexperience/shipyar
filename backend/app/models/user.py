@@ -68,6 +68,7 @@ class User(BaseModel):
     
     orders_as_shopper = relationship("Order", foreign_keys="Order.shopper_id", back_populates="shopper")
     offers_as_traveler = relationship("Offer", back_populates="traveler")
+    notifications = relationship("Notification", back_populates="user", cascade="all, delete-orphan")
     
     __table_args__ = (
         CheckConstraint(
@@ -163,7 +164,7 @@ class UserVerification(BaseModel):
     __tablename__ = "user_verifications"
     
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-    verification_type = Column(Enum(VerificationType), nullable=False)
+    verification_type = Column(Enum(VerificationType, values_callable=lambda obj: [e.value for e in obj]), nullable=False)
     verification_data = Column(JSONB, nullable=True)
     verified_at = Column(DateTime(timezone=True), nullable=True)
     expires_at = Column(DateTime(timezone=True), nullable=True)

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { apiService } from '../services/api';
 import './TravelerSearchResults.css';
 import ShipperCard from '../components/shipper/ShipperCard';
+import MakeOfferModal from '../components/offers/MakeOfferModal';
 
 const mockShippingRequests = [
   {
@@ -146,11 +148,13 @@ const TravelerSearchResults = () => {
   const navigate = useNavigate();
   const searchParams = location.state || {};
   
-  const [shippingRequests, setShippingRequests] = useState(mockShippingRequests);
-  const [filteredRequests, setFilteredRequests] = useState(mockShippingRequests);
-  const [loading, setLoading] = useState(false);
+  const [shippingRequests, setShippingRequests] = useState([]);
+  const [filteredRequests, setFilteredRequests] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [sortBy, setSortBy] = useState('recommended');
   const [showFilters, setShowFilters] = useState(true);
+  const [showOfferModal, setShowOfferModal] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState(null);
   
   // Filter states
   const [filters, setFilters] = useState({
@@ -164,12 +168,100 @@ const TravelerSearchResults = () => {
     flexibility: 'any'
   });
 
+  // Fetch orders from database based on destination
   useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []);
+    const fetchOrders = async () => {
+      setLoading(true);
+      console.log('=== TravelerSearchResults Debug ===');
+      console.log('Search params received:', searchParams);
+      console.log('Destination location:', searchParams.destinationLocation);
+      
+      try {
+        // Build filters based on travel search
+        const filters = {
+          status: 'active',
+          deadline_after: searchParams.date || new Date().toISOString().split('T')[0]
+        };
+
+        // If we have destination location info from the travel search
+        if (searchParams.destinationLocation) {
+          filters.destination_city_id = searchParams.destinationLocation.id;
+          console.log('Using destination_city_id:', filters.destination_city_id);
+        } else {
+          console.log('No destination location provided - will search all active orders');
+        }
+
+        console.log('Filters being sent to API:', filters);
+        const orders = await apiService.searchOrders(filters);
+        console.log('Orders received from API:', orders);
+        
+        // Transform orders to match the component's expected format
+        const transformedOrders = orders.map(order => ({
+          id: order.id,
+          shipper: {
+            name: order.shopper?.display_name || 
+                  (order.shopper ? `${order.shopper.first_name} ${order.shopper.last_name[0]}.` : 'Anonymous Shopper'),
+            profileImage: order.shopper?.avatar_url || 
+                         "https://ui-avatars.com/api/?name=" + 
+                         (order.shopper ? order.shopper.first_name + "+" + order.shopper.last_name : "Anonymous") + 
+                         "&background=3293D1&color=fff&size=150",
+            rating: order.shopper?.rating || 0,
+            reviewCount: order.shopper?.review_count || 0,
+            isVerified: order.shopper?.verified || false
+          },
+          package: {
+            description: order.product_name,
+            category: 'General',
+            weight: order.weight_estimate ? `${order.weight_estimate}kg` : 'Unknown',
+            dimensions: order.size_description || 'Standard',
+            value: `$${order.product_price || 0}`,
+            fragile: false,
+            urgent: false,
+            image_url: order.product_image_url
+          },
+          route: {
+            origin: 'Your location',
+            destination: order.destination_city?.name || order.destination_country || 'Unknown',
+            preferredDate: order.deadline_date,
+            flexible: true,
+            flexibleDays: 2
+          },
+          payment: {
+            offered: order.reward_amount,
+            currency: order.reward_currency || 'USD',
+            paymentMethod: 'Secure Escrow'
+          },
+          requirements: {
+            insuranceRequired: false,
+            receiptRequired: true,
+            photoUpdates: false,
+            specialInstructions: order.special_instructions || ''
+          },
+          timeline: {
+            pickupBy: order.preferred_delivery_date || order.deadline_date,
+            deliverBy: order.deadline_date,
+            responseTime: '24 hours'
+          },
+          status: order.status,
+          postedDate: order.created_at,
+          lastUpdated: order.updated_at || order.created_at,
+          rawOrder: order // Keep original order data
+        }));
+        
+        setShippingRequests(transformedOrders);
+        setFilteredRequests(transformedOrders);
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+        // Fallback to mock data if API fails
+        setShippingRequests(mockShippingRequests);
+        setFilteredRequests(mockShippingRequests);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOrders();
+  }, [searchParams]);
 
   useEffect(() => {
     let filtered = [...shippingRequests];
@@ -177,7 +269,9 @@ const TravelerSearchResults = () => {
     // Apply filters
     filtered = filtered.filter(request => {
       const payment = request.payment.offered;
-      const weight = parseFloat(request.package.weight.replace('kg', ''));
+      // Handle unknown weight properly
+      const weightStr = request.package.weight;
+      const weight = weightStr === 'Unknown' ? null : parseFloat(weightStr.replace('kg', ''));
       const isVerified = request.shipper.isVerified;
       const isUrgent = request.package.urgent;
       const isFragile = request.package.fragile;
@@ -186,7 +280,7 @@ const TravelerSearchResults = () => {
 
       return (
         payment >= filters.paymentRange[0] && payment <= filters.paymentRange[1] &&
-        weight >= filters.packageWeight[0] && weight <= filters.packageWeight[1] &&
+        (weight === null || (weight >= filters.packageWeight[0] && weight <= filters.packageWeight[1])) &&
         (!filters.urgent || isUrgent) &&
         (!filters.verified || isVerified) &&
         (filters.fragile === 'any' || (filters.fragile === 'yes' ? isFragile : !isFragile)) &&
@@ -205,7 +299,11 @@ const TravelerSearchResults = () => {
         filtered.sort((a, b) => a.payment.offered - b.payment.offered);
         break;
       case 'weight':
-        filtered.sort((a, b) => parseFloat(a.package.weight) - parseFloat(b.package.weight));
+        filtered.sort((a, b) => {
+          const aWeight = a.package.weight === 'Unknown' ? Infinity : parseFloat(a.package.weight);
+          const bWeight = b.package.weight === 'Unknown' ? Infinity : parseFloat(b.package.weight);
+          return aWeight - bWeight;
+        });
         break;
       case 'date':
         filtered.sort((a, b) => new Date(a.route.preferredDate) - new Date(b.route.preferredDate));
@@ -238,7 +336,37 @@ const TravelerSearchResults = () => {
 
   const handleAcceptRequest = (requestId) => {
     console.log('Accepting shipping request:', requestId);
-    // This would typically open a modal or navigate to acceptance page
+    // Find the request and use its raw order data if available
+    const request = filteredRequests.find(r => r.id === requestId);
+    if (request) {
+      // Use raw order data if available, otherwise convert
+      const orderData = request.rawOrder || {
+        id: request.id,
+        product_name: request.package.description,
+        product_url: 'https://example.com/product',
+        quantity: 1,
+        product_price: parseFloat(request.package.value?.replace('$', '') || '0'),
+        product_currency: request.payment.currency,
+        destination_country: request.route.destination,
+        destination_city: { name: request.route.destination },
+        deadline_date: request.route.preferredDate,
+        reward_amount: request.payment.offered,
+        reward_currency: request.payment.currency,
+        special_instructions: request.requirements.specialInstructions,
+        status: 'active'
+      };
+      setSelectedOrder(orderData);
+      setShowOfferModal(true);
+    }
+  };
+
+  const handleOfferCreated = () => {
+    setShowOfferModal(false);
+    setSelectedOrder(null);
+    // Show success message or redirect
+    alert('Offer submitted successfully!');
+    // Optionally refresh the orders list
+    window.location.reload();
   };
 
   return (
@@ -440,6 +568,19 @@ const TravelerSearchResults = () => {
                       />
                     ))}
                   </div>
+
+                  {/* Make Offer Modal */}
+                  {showOfferModal && selectedOrder && (
+                    <MakeOfferModal
+                      isOpen={showOfferModal}
+                      onClose={() => {
+                        setShowOfferModal(false);
+                        setSelectedOrder(null);
+                      }}
+                      order={selectedOrder}
+                      onOfferCreated={handleOfferCreated}
+                    />
+                  )}
 
                   {/* No Results */}
                   {filteredRequests.length === 0 && (

@@ -71,7 +71,7 @@ class Message(BaseModel):
     conversation_id = Column(UUID(as_uuid=True), ForeignKey("conversations.id", ondelete="CASCADE"), nullable=False)
     sender_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
 
-    message_type = Column(Enum(MessageType), nullable=False, default=MessageType.TEXT)
+    message_type = Column(Enum(MessageType, values_callable=lambda obj: [e.value for e in obj]), nullable=False, default=MessageType.TEXT.value)
     content = Column(Text, nullable=False)
 
     filtered_content = Column(Text, nullable=True)

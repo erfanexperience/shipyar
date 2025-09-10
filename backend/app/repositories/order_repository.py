@@ -37,7 +37,7 @@ class OrderRepository(BaseRepository[Order]):
         skip: int = 0,
         limit: int = 100
     ) -> List[Order]:
-        filters = {'status': OrderStatus.ACTIVE}
+        filters = {'status': OrderStatus.ACTIVE.value}
         if destination_country:
             filters['destination_country'] = destination_country
         

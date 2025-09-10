@@ -70,7 +70,7 @@ class Transaction(BaseModel):
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
     payment_method_id = Column(UUID(as_uuid=True), ForeignKey("payment_methods.id"), nullable=True)
 
-    transaction_type = Column(Enum(TransactionType), nullable=False)
+    transaction_type = Column(Enum(TransactionType, values_callable=lambda obj: [e.value for e in obj]), nullable=False)
     amount = Column(Numeric(10, 2), nullable=False)
     currency = Column(String(3), nullable=False, default='USD')
 
@@ -78,7 +78,7 @@ class Transaction(BaseModel):
     provider_transaction_id = Column(String(255), nullable=False)
     provider_response = Column(Text, nullable=True)
 
-    status = Column(Enum(PaymentStatus), nullable=False, default=PaymentStatus.PENDING)
+    status = Column(Enum(PaymentStatus, values_callable=lambda obj: [e.value for e in obj]), nullable=False, default=PaymentStatus.PENDING.value)
 
     processed_at = Column(DateTime(timezone=True), nullable=True)
     failed_at = Column(DateTime(timezone=True), nullable=True)
